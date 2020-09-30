@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Никита Голубков](https://up.htmlacademy.ru/react/5/user/1175037).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий Федин](https://htmlacademy.ru/profile/id1599231).
 
 ---
 
