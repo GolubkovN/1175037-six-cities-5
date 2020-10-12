@@ -11,4 +11,6 @@ export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)
 
 export const getBooleanValue = () => Boolean(getRandomInteger(0, 1));
 
-export const getRandomArray = () => ({url: `http://picsum.photos/248/152?r=${Math.random()}`});
+export const getRandomPhotos = () => ({url: `http://picsum.photos/248/152?r=${Math.random()}`});
+
+export const getRating = (rating) => Math.round(rating / 5 * 100) + `%`;
