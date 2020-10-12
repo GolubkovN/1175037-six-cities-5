@@ -8,7 +8,6 @@ import MainScreen from '../main-screen/main-screen';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Room from '../room/room';
-import Card from '../card/card';
 
 const App = ({offers}) => {
   return (
@@ -22,14 +21,11 @@ const App = ({offers}) => {
         <Route exact path='/login'>
           <Login />;
         </Route>
-        <Route exact path='/offer'>
-          <Card />;
-        </Route>
         <Route exact path='/favorites'>
           <Favorites />;
         </Route>
         <Route exact path='/offer/:id'>
-          <Room />;
+          <Room offer={offers[0]}/>;
         </Route>
       </Switch>
     </BrowserRouter>

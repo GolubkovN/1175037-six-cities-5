@@ -5,15 +5,16 @@ import {
   getRandomElement,
   getRandomPhotos,
 } from '../utils/offers';
-import {TypeOfHousing} from '../const';
+import {TypeOfHousing, Locations} from '../const';
 
 const HOUSING_TYPES = Object.values(TypeOfHousing);
-const PHOTOS = new Array(getRandomInteger(1, 5)).fill(``).map(getRandomPhotos);
+const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
+const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 
 export const getOffer = () => {
   return {
     id: generateId(),
-    location: `Amsterdam`,
+    location: getRandomElement(Locations),
     title: `just the title of the offer ` + getRandomInteger(1, 5),
     picture: {
       alt: `just the title of the offer`,
@@ -35,7 +36,7 @@ export const getOffer = () => {
       CableTV: getBooleanValue(0, 1),
     },
     owner: {
-      avatar: `http://picsum.photos/248/152?r=${Math.random()}`,
+      avatar: `${AVATAR_URL}/${Math.random()}`,
       name: `Name Surname`,
       isSuper: getBooleanValue(0, 1),
     }
