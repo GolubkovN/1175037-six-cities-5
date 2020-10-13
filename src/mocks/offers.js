@@ -5,11 +5,11 @@ import {
   getRandomElement,
   getRandomPhotos,
 } from '../utils/offers';
-import {TypeOfHousing, Locations} from '../const';
+import {TypeOfHousing, Locations, AVATAR_URL} from '../const';
 
 const HOUSING_TYPES = Object.values(TypeOfHousing);
 const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
-const AVATAR_URL = `https://api.adorable.io/avatars/128`;
+
 
 export const getOffer = () => {
   return {

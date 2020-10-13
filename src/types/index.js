@@ -2,32 +2,40 @@ import PropTypes from 'prop-types';
 import {TypeOfHousing} from '../const';
 
 export const offerTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  location: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  location: PropTypes.string,
   picture: PropTypes.shape({
-    alt: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-  }).isRequired,
-  isPremium: PropTypes.bool.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  description: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-  type: PropTypes.oneOf(Object.values(TypeOfHousing)).isRequired,
+    alt: PropTypes.string,
+    src: PropTypes.string,
+  }),
+  isPremium: PropTypes.bool,
+  isFavorite: PropTypes.bool,
+  description: PropTypes.string,
+  rating: PropTypes.number,
+  price: PropTypes.number,
+  type: PropTypes.oneOf(Object.values(TypeOfHousing)),
   photos: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string.isRequired,
-  })).isRequired,
-  Bedrooms: PropTypes.number.isRequired,
-  guests: PropTypes.number.isRequired,
+    url: PropTypes.string,
+  })),
+  Bedrooms: PropTypes.number,
+  guests: PropTypes.number,
   features: PropTypes.shape({
-    Wifi: PropTypes.bool.isRequired,
-    Heating: PropTypes.bool.isRequired,
-    Kitchen: PropTypes.bool.isRequired,
-    CableTV: PropTypes.bool.isRequired,
-  }).isRequired,
+    Wifi: PropTypes.bool,
+    Heating: PropTypes.bool,
+    Kitchen: PropTypes.bool,
+    CableTV: PropTypes.bool,
+  }),
   owner: PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    isSuper: PropTypes.bool.isRequired,
-  }).isRequired,
+    avatar: PropTypes.string,
+    name: PropTypes.string,
+    isSuper: PropTypes.bool,
+  }),
+});
+
+export const reviewTypes = PropTypes.shape({
+  avatar: PropTypes.string,
+  name: PropTypes.string,
+  rating: PropTypes.number,
+  date: PropTypes.date,
+  text: PropTypes.string
 });

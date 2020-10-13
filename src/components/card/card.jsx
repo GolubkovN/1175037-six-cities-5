@@ -1,14 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {getRating} from '../../utils/offers';
 import {offerTypes} from '../../types';
+import {TypeCards} from "../../const";
 
-const Card = ({onHover, offer}) => {
-  const {isPremium, picture, price, title, type, rating, isFavorite} = offer;
+const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
+  const {
+    isPremium,
+    picture,
+    price,
+    title,
+    type,
+    rating,
+    isFavorite
+  } = offer;
+
   const {alt, src} = picture;
+  const isFavoriteCard = TypeCards.FAVORITES === typeCard;
+
   return (
-    <article className="cities__place-card place-card"
+    <article className={`${typeCard}card place-card`}
       onMouseOver={(evt) => {
         evt.preventDefault();
         onHover(offer);
@@ -21,10 +34,10 @@ const Card = ({onHover, offer}) => {
         </div>
         : ``}
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={src} width="260" height="200" alt={alt}/>
-        </a>
+      <div className={`${typeCard}image-wrapper place-card__image-wrapper`}>
+        <Link to={`/offer/${offer.id}`}>
+          <img className="place-card__image" src={src} width={`${isFavoriteCard ? `150` : `260`}`} height={`${isFavoriteCard ? `110` : `200`}`} alt={alt}/>
+        </Link>
       </div>
 
       <div className="place-card__info">
@@ -58,6 +71,7 @@ const Card = ({onHover, offer}) => {
 Card.propTypes = {
   onHover: PropTypes.func.isRequired,
   offer: offerTypes.isRequired,
+  typeCard: PropTypes.oneOf(Object.values(TypeCards)),
 };
 
 export default Card;
