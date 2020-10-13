@@ -13,12 +13,9 @@ class CardsList extends PureComponent {
   }
 
   setActiveCard(offer) {
-    const {onSelectActiveCard} = this.props;
     this.setState({
       activeCard: offer,
     });
-
-    onSelectActiveCard(offer);
   }
 
   render() {
@@ -63,7 +60,6 @@ class CardsList extends PureComponent {
 }
 
 CardsList.propTypes = {
-  onSelectActiveCard: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerTypes).isRequired,
 };
 

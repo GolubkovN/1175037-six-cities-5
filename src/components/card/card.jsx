@@ -20,6 +20,14 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
   const {alt, src} = picture;
   const isFavoriteCard = TypeCards.FAVORITES === typeCard;
 
+  const Premium = () => {
+    return (
+      <div className="place-card__mark">
+        <span>Premium</span>
+      </div>
+    );
+  };
+
   return (
     <article className={`${typeCard}card place-card`}
       onMouseOver={(evt) => {
@@ -28,11 +36,7 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
       }}
     >
 
-      {isPremium
-        ? <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-        : ``}
+      {isPremium && <Premium />}
 
       <div className={`${typeCard}image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
