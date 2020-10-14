@@ -15,8 +15,8 @@ const Premium = () => {
   );
 };
 
-const Room = (props) => {
-  const {offer, reviews} = props;
+const Room = ({routeProps, offers, reviews}) => {
+  const offer = offers.find(({id}) => id === routeProps.match.params.id);
   const {
     isPremium,
     picture,
@@ -30,6 +30,7 @@ const Room = (props) => {
     owner,
     description,
   } = offer;
+
   const {name, avatar} = owner;
 
   return (
@@ -227,8 +228,9 @@ const Room = (props) => {
 };
 
 Room.propTypes = {
-  offer: offerTypes.isRequired,
-  reviews: PropTypes.arrayOf(reviewTypes),
+  offers: PropTypes.arrayOf(offerTypes).isRequired,
+  reviews: PropTypes.arrayOf(reviewTypes).isRequired,
+  routeProps: PropTypes.object.isRequired,
 };
 
 export default Room;

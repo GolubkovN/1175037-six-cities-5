@@ -22,7 +22,7 @@ const App = ({offers, reviews}) => {
           <Login />;
         </Route>
         <Route exact path='/favorites' render={() => <Favorites offers={offers.filter(({isFavorite}) => isFavorite)}/>}/>
-        <Route exact path='/offer/:id' render={() => <Room offer={offers[0]} reviews={reviews}/>}/>
+        <Route exact path='/offer/:id' render={(routeProps) => <Room routeProps={routeProps} offers={offers} reviews={reviews}/>}/>
       </Switch>
     </BrowserRouter>
   );

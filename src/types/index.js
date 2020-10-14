@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {TypeOfHousing} from '../const';
 
 export const offerTypes = PropTypes.shape({
-  id: PropTypes.number,
+  id: PropTypes.string,
   location: PropTypes.string,
   picture: PropTypes.shape({
     alt: PropTypes.string,

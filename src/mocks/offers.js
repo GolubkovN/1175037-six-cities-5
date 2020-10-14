@@ -13,7 +13,7 @@ const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
 
 export const getOffer = () => {
   return {
-    id: generateId(),
+    id: String(generateId()),
     location: getRandomElement(Locations),
     title: `just the title of the offer ` + getRandomInteger(1, 5),
     picture: {
