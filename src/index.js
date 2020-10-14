@@ -2,12 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/app';
 
-const Settings = {
-  OFFERS_COUNT: 173,
-};
+import {getArray, getRandomInteger} from './utils/offers';
+
+import {getOffer} from './mocks/offers';
+import {getReviews} from './mocks/reviews';
+
+const OFFERS_COUNT = 4;
+const REVIEW_COUNT = getRandomInteger(1, 3);
+
+const offers = getArray(OFFERS_COUNT, getOffer);
+const reviews = getArray(REVIEW_COUNT, getReviews);
 
 ReactDOM.render(
-    <App offersCount={Settings.OFFERS_COUNT} />,
+    <App
+      offers={offers}
+      reviews={reviews}
+    />,
     document.querySelector(`#root`)
 );
 
