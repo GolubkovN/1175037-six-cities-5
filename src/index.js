@@ -7,7 +7,7 @@ import {getArray, getRandomInteger} from './utils/offers';
 import {getOffer} from './mocks/offers';
 import {getReviews} from './mocks/reviews';
 
-const OFFERS_COUNT = 10;
+const OFFERS_COUNT = 4;
 const REVIEW_COUNT = getRandomInteger(1, 3);
 
 const offers = getArray(OFFERS_COUNT, getOffer);

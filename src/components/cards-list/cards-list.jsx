@@ -50,7 +50,7 @@ class CardsList extends PureComponent {
         <div className="cities__places-list places__list tabs__content">
 
           {offers
-            .map((offer) => <Card key={offer.id} offer={offer} onHover={() => this.setActiveCard(offer)}/>)
+            .map((offer, i) => <Card key={`offer-${i}`} offer={offer} onHover={() => this.setActiveCard(offer)}/>)
           }
 
         </div>

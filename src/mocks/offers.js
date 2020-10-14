@@ -1,5 +1,4 @@
 import {
-  generateId,
   getRandomInteger,
   getBooleanValue,
   getRandomElement,
@@ -13,9 +12,9 @@ const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
 
 export const getOffer = () => {
   return {
-    id: String(generateId()),
     location: getRandomElement(Locations),
     title: `just the title of the offer ` + getRandomInteger(1, 5),
+    id: String(getRandomInteger(1, 4)),
     picture: {
       alt: `just the title of the offer`,
       src: `http://picsum.photos/248/152?r=${Math.random()}`,
