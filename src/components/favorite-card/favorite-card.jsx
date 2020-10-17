@@ -6,10 +6,10 @@ import {TypeCards} from "../../const";
 
 import Card from '../card/card';
 
-const FavoriteCard = ({onHover, offer}) => {
+const FavoriteCard = ({offer}) => {
   return (
     <React.Fragment>
-      <Card offer={offer} onHover={onHover} typeCard={TypeCards.FAVORITES}/>
+      <Card offer={offer} typeCard={TypeCards.FAVORITES}/>
     </React.Fragment>
   );
 };
