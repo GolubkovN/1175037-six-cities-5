@@ -4,6 +4,10 @@ import {TypeOfHousing} from '../const';
 export const offerTypes = PropTypes.shape({
   id: PropTypes.string,
   location: PropTypes.string,
+  coordinations: PropTypes.shape({
+    lat: PropTypes.number,
+    lon: PropTypes.number,
+  }),
   picture: PropTypes.shape({
     alt: PropTypes.string,
     src: PropTypes.string,

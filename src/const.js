@@ -21,3 +21,22 @@ export const TypeCards = {
 };
 
 export const AVATAR_URL = `https://api.adorable.io/avatars/128`;
+
+export const COORDINATES = [
+  {
+    lat: 52.3909553943508,
+    lon: 4.85309666406198,
+  },
+  {
+    lat: 52.369553943508,
+    lon: 4.85309666406198,
+  },
+  {
+    lat: 52.3509553943508,
+    lon: 4.929309666406198,
+  },
+  {
+    lat: 52.3809553943508,
+    lon: 4.939309666406198,
+  },
+];

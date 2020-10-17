@@ -5,6 +5,7 @@ import {offerTypes} from '../../types';
 
 import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
+import Map from '../map/map';
 
 const MainScreen = ({offers}) => {
   return (
@@ -67,7 +68,9 @@ const MainScreen = ({offers}) => {
             <div className="cities__places-container container">
               <CardsList offers={offers} />
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <section className="cities__map map">
+                  <Map offers={offers}/>
+                </section>
               </div>
             </div>
           </div>
