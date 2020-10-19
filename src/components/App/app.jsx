@@ -9,13 +9,14 @@ import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Room from '../room/room';
 
-const App = ({offers, reviews}) => {
+const App = ({offers, reviews, cities}) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path='/'>
           <MainScreen
             offers={offers}
+            cities={cities}
           />;
         </Route>
         <Route exact path='/login'>
@@ -31,6 +32,7 @@ const App = ({offers, reviews}) => {
 App.propTypes = {
   offers: PropTypes.arrayOf(offerTypes).isRequired,
   reviews: PropTypes.arrayOf(reviewTypes).isRequired,
+  cities: PropTypes.array.isRequired,
 };
 
 export default App;

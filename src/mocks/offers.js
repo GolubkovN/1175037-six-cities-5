@@ -4,7 +4,7 @@ import {
   getRandomElement,
   getRandomPhotos,
 } from '../utils/offers';
-import {TypeOfHousing, AVATAR_URL, COORDINATES} from '../const';
+import {TypeOfHousing, AVATAR_URL, COORDINATES, Locations} from '../const';
 
 const HOUSING_TYPES = Object.values(TypeOfHousing);
 const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
@@ -13,7 +13,7 @@ const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
 export const getOffer = () => {
   return {
     id: String(getRandomInteger(1, 4)),
-    location: `Amsterdam`,
+    location: getRandomElement(Locations),
     coordinates: getRandomElement(COORDINATES),
     title: `just the title of the offer ` + getRandomInteger(1, 5),
     picture: {

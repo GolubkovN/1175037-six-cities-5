@@ -7,8 +7,8 @@ import {OFFERS_COUNT} from '../const';
 const offers = getArray(OFFERS_COUNT, getOffer);
 
 const initialState = {
-  currentCity: `Paris`,
-  offersList: offers.filter((offer) => offer.location === `Paris`)
+  currentCity: `Amsterdam`,
+  offersList: offers.filter((offer) => offer.location === `Amsterdam`)
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,7 +16,6 @@ export const reducer = (state = initialState, action) => {
     case ActionTypes.CHANGE_CITY:
       return extend(state, {
         currentCity: action.payload,
-        offersList: offers.filter((offer) => offer.location === action.payload),
       });
     case ActionTypes.GET_OFFERS:
       return state;

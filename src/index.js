@@ -11,6 +11,8 @@ import {getOffer} from './mocks/offers';
 import {getReviews} from './mocks/reviews';
 import {reducer} from './store/reducer';
 
+import {Locations} from './const';
+
 const REVIEW_COUNT = getRandomInteger(1, 3);
 
 const store = createStore(
@@ -26,6 +28,7 @@ ReactDOM.render(
       <App
         offers={offers}
         reviews={reviews}
+        cities={Locations}
       />
     </Provider>,
     document.querySelector(`#root`)

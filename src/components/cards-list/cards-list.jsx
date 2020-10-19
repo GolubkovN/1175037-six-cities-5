@@ -19,11 +19,11 @@ class CardsList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, currentCity} = this.props;
     return (
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
-        <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+        <b className="places__found">{offers.length} places to stay in {currentCity}</b>
         <form className="places__sorting" action="#" method="get">
           <span className="places__sorting-caption">Sort by</span>
           <span className="places__sorting-type" tabIndex="0">
@@ -65,6 +65,7 @@ class CardsList extends PureComponent {
 
 CardsList.propTypes = {
   offers: PropTypes.arrayOf(offerTypes).isRequired,
+  currentCity: PropTypes.string.isRequired,
 };
 
 export default CardsList;
