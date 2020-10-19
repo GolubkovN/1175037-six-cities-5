@@ -1,3 +1,5 @@
+export const OFFERS_COUNT = 4;
+
 export const Locations = [
   `Amsterdam`,
   `Humburg`,
