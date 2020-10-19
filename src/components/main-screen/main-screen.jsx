@@ -10,8 +10,7 @@ import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
 import Map from '../map/map';
 
-const MainScreen = ({offers, cities, currentCity, changeCity}) => {
-  const currentCityOffers = offers.filter((offer) => offer.location === currentCity);
+const MainScreen = ({offersList, currentCity, changeCity}) => {
 
   return (
     <React.Fragment>
@@ -35,15 +34,15 @@ const MainScreen = ({offers, cities, currentCity, changeCity}) => {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <Filter cities={cities} currentCity={currentCity} changeCity={changeCity}/>
+              <Filter currentCity={currentCity} changeCity={changeCity}/>
             </section>
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <CardsList offers={currentCityOffers} currentCity={currentCity} />
+              <CardsList offers={offersList} currentCity={currentCity} />
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map offers={currentCityOffers}/>
+                  <Map offers={offersList}/>
                 </section>
               </div>
             </div>
@@ -55,8 +54,7 @@ const MainScreen = ({offers, cities, currentCity, changeCity}) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(offerTypes),
-  cities: PropTypes.array.isRequired,
+  offersList: PropTypes.arrayOf(offerTypes),
   changeCity: PropTypes.func.isRequired,
   currentCity: PropTypes.string.isRequired,
 };

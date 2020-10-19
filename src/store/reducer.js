@@ -16,6 +16,7 @@ export const reducer = (state = initialState, action) => {
     case ActionTypes.CHANGE_CITY:
       return extend(state, {
         currentCity: action.payload,
+        offersList: offers.filter(({location}) => location === action.payload)
       });
     case ActionTypes.GET_OFFERS:
       return state;
