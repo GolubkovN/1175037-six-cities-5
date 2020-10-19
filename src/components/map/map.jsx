@@ -8,6 +8,7 @@ import {offerTypes} from '../../types';
 class Map extends React.Component {
   constructor(props) {
     super(props);
+    this.map = null;
   }
 
   init() {
@@ -17,24 +18,29 @@ class Map extends React.Component {
       iconSize: [30, 30]
     });
     const zoom = 12;
-    const map = leaflet.map(`map`, {
+    this.map = leaflet.map(`map`, {
       center: city,
       zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(city, zoom);
+    this.map.setView(city, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(map);
+      .addTo(this.map);
 
-    this.addPins(map, icon);
+    this.addPins(this.map, icon);
   }
 
   componentDidMount() {
+    this.init();
+  }
+
+  componentDidUpdate() {
+    this.map.remove();
     this.init();
   }
 
