@@ -5,19 +5,22 @@ import 'leaflet/dist/leaflet.css';
 
 import {offerTypes} from '../../types';
 
+const city = [52.38333, 4.9];
+const icon = leaflet.icon({
+  iconUrl: `img/pin.svg`,
+  iconSize: [30, 30]
+});
+const zoom = 12;
+
 class Map extends React.Component {
   constructor(props) {
     super(props);
+
+    this.markersGroup = null;
     this.map = null;
   }
 
   init() {
-    const city = [52.38333, 4.9];
-    const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
-    });
-    const zoom = 12;
     this.map = leaflet.map(`map`, {
       center: city,
       zoom,
@@ -32,7 +35,9 @@ class Map extends React.Component {
       })
       .addTo(this.map);
 
-    this.addPins(this.map, icon);
+    this.markersGroup = leaflet.layerGroup().addTo(this.map);
+
+    this.addPins();
   }
 
   componentDidMount() {
@@ -40,15 +45,12 @@ class Map extends React.Component {
   }
 
   componentDidUpdate() {
-    this.map.remove();
-    this.init();
+    this.addPins();
   }
 
-  addPins(map, icon) {
-    this.props.offers.map((offer) =>
-      leaflet
-      .marker(offer.coordinates, {icon})
-      .addTo(map));
+  addPins() {
+    this.markersGroup.clearLayers();
+    this.props.offers.forEach(({coordinates}) => leaflet.marker(coordinates, {icon}).addTo(this.markersGroup));
   }
 
   render() {

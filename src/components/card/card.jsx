@@ -30,8 +30,7 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
 
   return (
     <article className={`${typeCard}card place-card`}
-      onMouseOver={(evt) => {
-        evt.preventDefault();
+      onMouseOver={() => {
         onHover(offer);
       }}
     >
@@ -40,7 +39,12 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
 
       <div className={`${typeCard}image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${offer.id}`}>
-          <img className="place-card__image" src={src} width={`${isFavoriteCard ? `150` : `260`}`} height={`${isFavoriteCard ? `110` : `200`}`} alt={alt}/>
+          <img
+            className="place-card__image"
+            src={src} width={`${isFavoriteCard ? `150` : `260`}`}
+            height={`${isFavoriteCard ? `110` : `200`}`}
+            alt={alt}
+          />
         </Link>
       </div>
 

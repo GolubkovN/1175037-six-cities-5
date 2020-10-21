@@ -10,7 +10,7 @@ import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
 import Map from '../map/map';
 
-const MainScreen = ({offersList, currentCity, changeCity}) => {
+const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) => {
 
   return (
     <React.Fragment>
@@ -34,15 +34,15 @@ const MainScreen = ({offersList, currentCity, changeCity}) => {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <Filter currentCity={currentCity} changeCity={changeCity}/>
+              <Filter currentCity={currentCity} cities={citiesList} changeCity={changeCity}/>
             </section>
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <CardsList offers={offersList} currentCity={currentCity} />
+              <CardsList offers={currentOffersList} currentCity={currentCity} />
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map offers={offersList}/>
+                  <Map offers={currentOffersList}/>
                 </section>
               </div>
             </div>
@@ -54,23 +54,23 @@ const MainScreen = ({offersList, currentCity, changeCity}) => {
 };
 
 MainScreen.propTypes = {
-  offersList: PropTypes.arrayOf(offerTypes),
+  currentOffersList: PropTypes.arrayOf(offerTypes),
   changeCity: PropTypes.func.isRequired,
+  citiesList: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
-  offersList: state.offersList,
+  citiesList: state.citiesList,
+  currentOffersList: state.currentOffersList,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeCity(city) {
     dispatch(ActionCreator.changeCity(city));
-  },
-  getOffers(question, answer) {
-    dispatch(ActionCreator.getOffers(question, answer));
-  },
+  }
 });
 
 export {MainScreen};

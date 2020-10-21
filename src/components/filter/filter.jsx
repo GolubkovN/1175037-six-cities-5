@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Locations} from '../../const';
 
-const Filter = ({changeCity, currentCity}) => {
+const Filter = ({changeCity, cities, currentCity}) => {
   return (
     <ul className="locations__list tabs__list">
-      {Locations.map((city, i) =>
+      {cities.map((city, i) =>
         <li key={`city-${i}`} className="locations__item">
           <a className={city === currentCity ? `locations__item-link tabs__item tabs__item--active` : `locations__item-link tabs__item`}
             href="#"
-            onClick={changeCity}
+            onClick={(evt) => changeCity(evt.target.textContent)}
           >
             <span>{city}</span>
           </a>
@@ -22,6 +21,7 @@ const Filter = ({changeCity, currentCity}) => {
 
 Filter.propTypes = {
   changeCity: PropTypes.func.isRequired,
+  cities: PropTypes.array.isRequired,
   currentCity: PropTypes.string.isRequired,
 };
 

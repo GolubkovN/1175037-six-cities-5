@@ -11,7 +11,7 @@ import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Room from '../room/room';
 
-const App = ({offers, offersList, reviews}) => {
+const App = ({offersList, currentOffersList, reviewsList}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -21,8 +21,8 @@ const App = ({offers, offersList, reviews}) => {
         <Route exact path='/login'>
           <Login />;
         </Route>
-        <Route exact path='/favorites' render={() => <Favorites offers={offers.filter(({isFavorite}) => isFavorite)}/>}/>
-        <Route exact path='/offer/:id' render={(routeProps) => <Room routeProps={routeProps} offers={offersList} reviews={reviews}/>}/>
+        <Route exact path='/favorites' render={() => <Favorites offers={offersList.filter(({isFavorite}) => isFavorite)}/>}/>
+        <Route exact path='/offer/:id' render={(routeProps) => <Room routeProps={routeProps} offers={currentOffersList} reviews={reviewsList}/>}/>
       </Switch>
     </BrowserRouter>
   );
@@ -30,22 +30,20 @@ const App = ({offers, offersList, reviews}) => {
 
 App.propTypes = {
   offersList: PropTypes.arrayOf(offerTypes).isRequired,
-  offers: PropTypes.arrayOf(offerTypes).isRequired,
-  reviews: PropTypes.arrayOf(reviewTypes).isRequired,
+  currentOffersList: PropTypes.arrayOf(offerTypes).isRequired,
+  reviewsList: PropTypes.arrayOf(reviewTypes).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
   offersList: state.offersList,
+  reviewsList: state.reviewsList,
+  currentOffersList: state.currentOffersList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeCity(city) {
     dispatch(ActionCreator.changeCity(city));
-  },
-  getOffers(question, answer) {
-    dispatch(ActionCreator.getOffers(question, answer));
-  },
+  }
 });
 
 export {App};

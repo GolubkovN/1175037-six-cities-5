@@ -45,8 +45,8 @@ class Favorites extends PureComponent {
                       </div>
                     </div>
                     <div className="favorites__places">
-                      {groupedOffers.get(location).map((offer) =>
-                        <FavoriteCard key={offer.id} offer={offer} onHover={() => this.setActiveCard(offer)} />
+                      {groupedOffers.get(location).map((offer, k) =>
+                        <FavoriteCard key={`offer-${k}`} offer={offer} onHover={() => this.setActiveCard(offer)} />
                       )}
                     </div>
                   </li>
