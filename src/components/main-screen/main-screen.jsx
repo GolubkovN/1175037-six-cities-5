@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 
 import {offerTypes} from '../../types';
 
+import Filter from '../filter/filter';
 import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
 import Map from '../map/map';
 
-const MainScreen = ({offers}) => {
+const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) => {
+
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -30,46 +34,15 @@ const MainScreen = ({offers}) => {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
-              </ul>
+              <Filter currentCity={currentCity} cities={citiesList} changeCity={changeCity}/>
             </section>
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <CardsList offers={offers} />
+              <CardsList offers={currentOffersList} currentCity={currentCity} />
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map offers={offers}/>
+                  <Map offers={currentOffersList}/>
                 </section>
               </div>
             </div>
@@ -81,7 +54,24 @@ const MainScreen = ({offers}) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(offerTypes),
+  currentOffersList: PropTypes.arrayOf(offerTypes),
+  changeCity: PropTypes.func.isRequired,
+  citiesList: PropTypes.array.isRequired,
+  currentCity: PropTypes.string.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => ({
+  currentCity: state.currentCity,
+  citiesList: state.citiesList,
+  currentOffersList: state.currentOffersList,
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  }
+});
+
+export {MainScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
