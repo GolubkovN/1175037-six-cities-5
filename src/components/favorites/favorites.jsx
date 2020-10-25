@@ -50,7 +50,7 @@ const Favorites = ({offers, onHover}) => {
 
 Favorites.propTypes = {
   offers: PropTypes.arrayOf(offerTypes).isRequired,
-  onHover: PropTypes.func.isRequired,
+  onHover: PropTypes.func,
 };
 
 export default Favorites;

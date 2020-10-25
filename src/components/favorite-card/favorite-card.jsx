@@ -15,7 +15,7 @@ const FavoriteCard = ({offer, onHover}) => {
 };
 
 FavoriteCard.propTypes = {
-  onHover: PropTypes.func.isRequired,
+  onHover: PropTypes.func,
   offer: offerTypes.isRequired,
 };
 
