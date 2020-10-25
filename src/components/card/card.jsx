@@ -6,7 +6,7 @@ import {getRating} from '../../utils/offers';
 import {offerTypes} from '../../types';
 import {TypeCards} from "../../const";
 
-const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
+const Card = ({onHover, onMouseLeave, offer, typeCard = TypeCards.CITIES}) => {
   const {
     isPremium,
     picture,
@@ -30,9 +30,10 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
 
   return (
     <article className={`${typeCard}card place-card`}
-      onMouseOver={() => {
+      onMouseEnter={() => {
         onHover(offer);
       }}
+      onMouseLeave={onMouseLeave}
     >
 
       {isPremium && <Premium />}
@@ -78,6 +79,7 @@ const Card = ({onHover, offer, typeCard = TypeCards.CITIES}) => {
 
 Card.propTypes = {
   onHover: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
   offer: offerTypes.isRequired,
   typeCard: PropTypes.oneOf(Object.values(TypeCards)),
 };
