@@ -12,7 +12,7 @@ const icon = leaflet.icon({
 });
 const zoom = 12;
 
-class Map extends React.Component {
+class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
