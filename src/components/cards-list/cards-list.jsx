@@ -27,7 +27,6 @@ const CardsList = ({offers, onHover, onMouseLeave, typeCard, className}) => {
 
 CardsList.propTypes = {
   offers: PropTypes.arrayOf(offerTypes).isRequired,
-  currentCity: PropTypes.string.isRequired,
   onHover: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   typeCard: PropTypes.oneOf(Object.values(TypeCards)),

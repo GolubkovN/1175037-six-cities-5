@@ -66,7 +66,7 @@ const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) =>
                   </select>
                   --> */}
                 </form>
-                <CardsList offers={currentOffersList} currentCity={currentCity} typeCard={TypeCards.CITIES} className={`cities__places-list`}/>
+                <CardsList offers={currentOffersList} typeCard={TypeCards.CITIES} className={`cities__places-list`}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
