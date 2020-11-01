@@ -8,6 +8,7 @@ import {TypeCards} from "../../const";
 import Reviews from '../reviews/reviews';
 import Header from '../header/header';
 import CardsList from '../cards-list/cards-list';
+import Map from '../map/map';
 
 const Premium = () => {
   return (
@@ -120,7 +121,9 @@ const Room = ({routeProps, offers, reviews}) => {
               <Reviews reviews={reviews}/>
             </div>
           </div>
-          <section className="property__map map"/>
+          <section className="property__map map">
+            <Map offers={offers}/>
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
