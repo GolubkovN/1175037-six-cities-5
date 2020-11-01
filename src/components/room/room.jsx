@@ -20,6 +20,8 @@ const Premium = () => {
 
 const Room = ({routeProps, offers, reviews}) => {
   const offer = offers.find(({id}) => id === routeProps.match.params.id);
+  const currentReviews = reviews.filter(({id}) => id === offer.id);
+
   const {
     isPremium,
     picture,
@@ -118,7 +120,7 @@ const Room = ({routeProps, offers, reviews}) => {
                   </p>
                 </div>
               </div>
-              <Reviews reviews={reviews}/>
+              <Reviews reviews={currentReviews}/>
             </div>
           </div>
           <section className="property__map map">
