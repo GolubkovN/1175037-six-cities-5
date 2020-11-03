@@ -37,6 +37,7 @@ export const offerTypes = PropTypes.shape({
 });
 
 export const reviewTypes = PropTypes.shape({
+  id: PropTypes.string,
   avatar: PropTypes.string,
   name: PropTypes.string,
   rating: PropTypes.number,

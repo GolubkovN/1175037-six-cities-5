@@ -6,7 +6,7 @@ import {getRating} from '../../utils/offers';
 import {offerTypes} from '../../types';
 import {TypeCards} from "../../const";
 
-const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard = TypeCards.CITIES}) => {
+const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) => {
   const {
     isPremium,
     picture,

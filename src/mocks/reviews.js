@@ -3,6 +3,7 @@ import {AVATAR_URL} from '../const';
 
 export const getReviews = () => {
   return {
+    id: String(getRandomInteger(1, 4)),
     avatar: `${AVATAR_URL}/${Math.random()}`,
     name: `Name`,
     rating: getRandomInteger(1, 5),
