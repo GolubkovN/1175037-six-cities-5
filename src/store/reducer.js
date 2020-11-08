@@ -18,6 +18,7 @@ const initialState = {
   reviewsList: reviews,
   currentSortType: `Popular`,
   sortIsOpen: false,
+  activeItem: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -35,6 +36,10 @@ export const reducer = (state = initialState, action) => {
     case ActionTypes.OPEN_SORT:
       return extend(state, {
         sortIsOpen: action.payload,
+      });
+    case ActionTypes.CHANGE_ACTIVE_ITEM:
+      return extend(state, {
+        activeItem: action.payload,
       });
     default:
       return state;

@@ -1,7 +1,8 @@
 export const ActionTypes = {
-  CHANGE_CITY: `CHANGE_CITY`,
-  OPEN_SORT: `OPEN_SORT`,
-  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
+  CHANGE_CITY: `CHANGE CITY`,
+  OPEN_SORT: `OPEN SORT`,
+  CHANGE_SORT_TYPE: `CHANGE SORT TYPE`,
+  CHANGE_ACTIVE_ITEM: `CHANGE ACTIVE ITEM`
 };
 
 export const ActionCreator = {
@@ -18,4 +19,8 @@ export const ActionCreator = {
     payload: sortType,
     currentCity,
   }),
+  changeActiveItem: (activeItem) => ({
+    type: ActionTypes.CHANGE_ACTIVE_ITEM,
+    payload: activeItem,
+  })
 };
