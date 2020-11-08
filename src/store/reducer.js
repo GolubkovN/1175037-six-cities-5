@@ -3,7 +3,7 @@ import {getOffer} from '../mocks/offers';
 import {getReviews} from '../mocks/reviews';
 import {extend} from '../utils/store';
 import {OFFERS_COUNT, Locations} from '../const';
-import {getArray, getRandomInteger} from '../utils/offers';
+import {getArray, getRandomInteger, sortOffers} from '../utils/offers';
 
 const REVIEW_COUNT = getRandomInteger(1, 3);
 
@@ -15,7 +15,8 @@ const initialState = {
   citiesList: Locations,
   offersList: offers,
   currentOffersList: offers.filter(({location}) => location === `Amsterdam`),
-  reviewsList: reviews
+  reviewsList: reviews,
+  currentSortType: `Popular`,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -24,6 +25,11 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {
         currentCity: action.payload,
         currentOffersList: offers.filter(({location}) => location === action.payload)
+      });
+    case ActionTypes.CHANGE_SORT_TYPE:
+      return extend(state, {
+        currentSortType: action.payload,
+        currentOffersList: sortOffers(action.payload, state.currentOffersList),
       });
     default:
       return state;

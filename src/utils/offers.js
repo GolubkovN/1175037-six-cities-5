@@ -24,3 +24,24 @@ export const getOffersByLocation = (offers) => {
 };
 
 export const getArray = (count, func) => new Array(count).fill(``).map(func);
+
+export const sortOffers = (sortType, def) => {
+  const someArr = def.slice();
+  switch (sortType) {
+    case `low to high`:
+      return someArr.sort((a, b) => a.price - b.price);
+    case `high to low`:
+      return someArr.sort((a, b) => b.price - a.price);
+    case `Top rated first`:
+      return someArr.sort((a, b) => b.rating - a.rating);
+    case `Popular`:
+      return def;
+  }
+  return someArr;
+};
+
+// export const sortRules = {
+//   'low to high': (a, b) => a.price - b.price,
+//   'high to low': (a, b) => b.price - a.price,
+//   'Top rated first': (a, b) => b.rating - a.rating,
+// };
