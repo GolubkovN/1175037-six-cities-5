@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 
 import {offerTypes} from '../../types';
-// import {withActiveItem} from '../../hocs/with-active-item';
 import {TypeCards} from "../../const";
 
 import Card from '../card/card';
@@ -31,8 +30,6 @@ const CardsList = ({offers, typeCard, className, changeActiveItem}) => {
 
 CardsList.propTypes = {
   offers: PropTypes.arrayOf(offerTypes).isRequired,
-  // onHover: PropTypes.func.isRequired,
-  // onMouseLeave: PropTypes.func.isRequired,
   changeActiveItem: PropTypes.func.isRequired,
   typeCard: PropTypes.oneOf(Object.values(TypeCards)),
   className: PropTypes.string.isRequired,
@@ -45,4 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {CardsList};
-export default connect(mapDispatchToProps)(CardsList);
+export default connect(null, mapDispatchToProps)(CardsList);
