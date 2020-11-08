@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
 
 import {offerTypes} from '../../types';
-import {TypeCards} from "../../const";
 
-import Filter from '../filter/filter';
-import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
-import Map from '../map/map';
-import Sort from '../sort/sort';
+import MainEmpty from '../main-empty/main-empty';
+import MainWithOffers from '../main-with-offers/main-with-offers';
 
-const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) => {
+const MainScreen = ({currentOffersList}) => {
 
   return (
     <React.Fragment>
@@ -31,55 +27,23 @@ const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) =>
 
       <div className="page page--gray page--main">
         <Header />
-
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <div className="tabs">
-            <section className="locations container">
-              <Filter currentCity={currentCity} cities={citiesList} changeCity={changeCity}/>
-            </section>
-          </div>
-          <div className="cities">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{currentOffersList.length} {currentOffersList.length > 1 ? `places` : `place`} to stay in {currentCity}</b>
-                <Sort />
-                <CardsList offers={currentOffersList} typeCard={TypeCards.CITIES} className={`cities__places-list`}/>
-              </section>
-              <div className="cities__right-section">
-                <section className="cities__map map">
-                  <Map offers={currentOffersList}/>
-                </section>
-              </div>
-            </div>
-          </div>
-        </main>
+        {
+          currentOffersList.length === 0
+            ? <MainEmpty />
+            : <MainWithOffers />
+        }
       </div>
     </React.Fragment>
   );
 };
 
 MainScreen.propTypes = {
-  offersList: PropTypes.arrayOf(offerTypes),
   currentOffersList: PropTypes.arrayOf(offerTypes),
-  changeCity: PropTypes.func.isRequired,
-  citiesList: PropTypes.array.isRequired,
-  currentCity: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  citiesList: state.citiesList,
   currentOffersList: state.currentOffersList,
-  offersList: state.offersList,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeCity(city) {
-    dispatch(ActionCreator.changeCity(city));
-  }
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps)(MainScreen);

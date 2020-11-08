@@ -1,43 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 
-const MainEmpty = () => {
+import Filter from '../filter/filter';
+
+const MainEmpty = ({currentCity, citiesList, changeCity}) => {
   return (
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <Filter currentCity={currentCity} cities={citiesList} changeCity={changeCity} />
         </section>
       </div>
       <div className="cities">
@@ -55,4 +29,22 @@ const MainEmpty = () => {
   );
 };
 
-export default MainEmpty;
+MainEmpty.propTypes = {
+  changeCity: PropTypes.func.isRequired,
+  citiesList: PropTypes.array.isRequired,
+  currentCity: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  currentCity: state.currentCity,
+  citiesList: state.citiesList,
+  offersList: state.offersList,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainEmpty);
