@@ -17,6 +17,7 @@ const initialState = {
   currentOffersList: offers.filter(({location}) => location === `Amsterdam`),
   reviewsList: reviews,
   currentSortType: `Popular`,
+  sortIsOpen: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -30,6 +31,10 @@ export const reducer = (state = initialState, action) => {
       return extend(state, {
         currentSortType: action.payload,
         currentOffersList: sortOffers(action.payload, state.currentOffersList),
+      });
+    case ActionTypes.OPEN_SORT:
+      return extend(state, {
+        sortIsOpen: action.payload,
       });
     default:
       return state;

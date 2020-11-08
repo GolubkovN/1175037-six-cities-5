@@ -5,19 +5,20 @@ import {ActionCreator} from '../../store/action';
 
 import {SORT_TYPES} from './sort-type';
 
-// const isOpened = false;
-
-const Sort = ({currentSortType, changeSortType}) => {
+const Sort = ({currentSortType, changeSortType, sortIsOpen, openSort}) => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex="0">
+      <span
+        className="places__sorting-type"
+        tabIndex="0"
+        onClick={() => openSort(!sortIsOpen)}>
         {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${`places__options--opened`}`}>
+      <ul className={`places__options places__options--custom ${sortIsOpen && `places__options--opened`}`}>
         {SORT_TYPES.map((type) => {
           return (
             <li key={type.key}
@@ -38,16 +39,22 @@ const Sort = ({currentSortType, changeSortType}) => {
 Sort.propTypes = {
   currentSortType: PropTypes.string.isRequired,
   changeSortType: PropTypes.func.isRequired,
+  sortIsOpen: PropTypes.bool.isRequired,
+  openSort: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currentSortType: state.currentSortType,
+  sortIsOpen: state.sortIsOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   changeSortType(sortType) {
     dispatch(ActionCreator.changeSortType(sortType));
-  }
+  },
+  openSort(bool) {
+    dispatch(ActionCreator.openSort(bool));
+  },
 });
 
 export {Sort};
