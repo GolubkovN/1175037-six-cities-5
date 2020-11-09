@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
 
 import {offerTypes} from '../../types';
-import {TypeCards} from "../../const";
 
-import Filter from '../filter/filter';
-import CardsList from '../cards-list/cards-list';
 import Header from '../header/header';
-import Map from '../map/map';
+import MainEmpty from '../main-empty/main-empty';
+import MainWithOffers from '../main-with-offers/main-with-offers';
 
-const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) => {
+const MainScreen = ({currentOffersList}) => {
 
   return (
     <React.Fragment>
@@ -30,77 +27,23 @@ const MainScreen = ({currentOffersList, currentCity, citiesList, changeCity}) =>
 
       <div className="page page--gray page--main">
         <Header />
-
-        <main className="page__main page__main--index">
-          <h1 className="visually-hidden">Cities</h1>
-          <div className="tabs">
-            <section className="locations container">
-              <Filter currentCity={currentCity} cities={citiesList} changeCity={changeCity}/>
-            </section>
-          </div>
-          <div className="cities">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{currentOffersList.length} {currentOffersList.length > 1 ? `places` : `place`} to stay in {currentCity}</b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    Popular
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                    <li className="places__option" tabIndex="0">Price: low to high</li>
-                    <li className="places__option" tabIndex="0">Price: high to low</li>
-                    <li className="places__option" tabIndex="0">Top rated first</li>
-                  </ul>
-                  {/* <!--
-                  <select className="places__sorting-type" id="places-sorting">
-                    <option className="places__option" value="popular" selected="">Popular</option>
-                    <option className="places__option" value="to-high">Price: low to high</option>
-                    <option className="places__option" value="to-low">Price: high to low</option>
-                    <option className="places__option" value="top-rated">Top rated first</option>
-                  </select>
-                  --> */}
-                </form>
-                <CardsList offers={currentOffersList} typeCard={TypeCards.CITIES} className={`cities__places-list`}/>
-              </section>
-              <div className="cities__right-section">
-                <section className="cities__map map">
-                  <Map offers={currentOffersList}/>
-                </section>
-              </div>
-            </div>
-          </div>
-        </main>
+        {
+          currentOffersList.length === 0
+            ? <MainEmpty />
+            : <MainWithOffers />
+        }
       </div>
     </React.Fragment>
   );
 };
 
 MainScreen.propTypes = {
-  offersList: PropTypes.arrayOf(offerTypes),
   currentOffersList: PropTypes.arrayOf(offerTypes),
-  changeCity: PropTypes.func.isRequired,
-  citiesList: PropTypes.array.isRequired,
-  currentCity: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  citiesList: state.citiesList,
   currentOffersList: state.currentOffersList,
-  offersList: state.offersList,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeCity(city) {
-    dispatch(ActionCreator.changeCity(city));
-  }
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps)(MainScreen);
