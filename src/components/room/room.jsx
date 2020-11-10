@@ -20,6 +20,7 @@ const Premium = () => {
 
 const Room = ({routeProps, offers, reviews}) => {
   const offer = offers.find(({id}) => id === routeProps.match.params.id);
+  const nearOffers = offers.filter(({id}) => id !== routeProps.match.params.id);
   const currentReviews = reviews.filter(({id}) => id === offer.id);
 
   const {
@@ -130,7 +131,7 @@ const Room = ({routeProps, offers, reviews}) => {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <CardsList offers={offers} typeCard={TypeCards.NEAR_PLACES} className={`near-places__list`} />
+            <CardsList offers={nearOffers} typeCard={TypeCards.NEAR_PLACES} className={`near-places__list`} />
           </section>
         </div>
       </main>
