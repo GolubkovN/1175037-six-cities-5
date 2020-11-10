@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
-
+import {filterOffers} from '../../store/reducers/selectors';
 import {offerTypes, reviewTypes} from '../../types';
 
 import MainScreen from '../main-screen/main-screen';
@@ -45,7 +45,7 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   offersList: state.offersList,
   reviewsList: state.reviewsList,
-  currentOffersList: state.currentOffersList,
+  currentOffersList: filterOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

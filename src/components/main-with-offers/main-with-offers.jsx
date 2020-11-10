@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
+import {filterOffers} from '../../store/reducers/selectors';
 
 import {offerTypes} from '../../types';
 import {TypeCards} from "../../const";
@@ -40,7 +41,6 @@ const MainWithOffers = ({currentOffersList, currentCity, citiesList, changeCity}
 };
 
 MainWithOffers.propTypes = {
-  offersList: PropTypes.arrayOf(offerTypes),
   currentOffersList: PropTypes.arrayOf(offerTypes),
   changeCity: PropTypes.func.isRequired,
   citiesList: PropTypes.array.isRequired,
@@ -50,8 +50,7 @@ MainWithOffers.propTypes = {
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
   citiesList: state.citiesList,
-  currentOffersList: state.currentOffersList,
-  offersList: state.offersList,
+  currentOffersList: filterOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

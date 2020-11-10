@@ -40,8 +40,3 @@ export const sortOffers = (sortType, def) => {
   return someArr;
 };
 
-// export const sortRules = {
-//   'low to high': (a, b) => a.price - b.price,
-//   'high to low': (a, b) => b.price - a.price,
-//   'Top rated first': (a, b) => b.rating - a.rating,
-// };
