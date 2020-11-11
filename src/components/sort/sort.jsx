@@ -44,8 +44,8 @@ Sort.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentSortType: state.currentSortType,
-  sortIsOpen: state.sortIsOpen,
+  currentSortType: state.PROCESS.currentSortType,
+  sortIsOpen: state.PROCESS.sortIsOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({

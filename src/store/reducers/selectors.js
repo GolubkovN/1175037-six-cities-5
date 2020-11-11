@@ -2,9 +2,9 @@ import {createSelector} from 'reselect';
 import {filterByLocation} from '../../utils/store';
 import {sortOffers} from '../../utils/offers';
 
-const getOffers = (state) => state.offersList;
-const getCurrentCity = (state) => state.currentCity;
-const getCurrentSortType = (state) => state.currentSortType;
+const getOffers = (state) => state.DATA.offersList;
+const getCurrentCity = (state) => state.PROCESS.currentCity;
+const getCurrentSortType = (state) => state.PROCESS.currentSortType;
 
 export const filterOffers = createSelector([getOffers,
   getCurrentCity, getCurrentSortType], (offers, city, sortType) => {

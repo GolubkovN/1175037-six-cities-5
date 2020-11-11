@@ -43,8 +43,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offersList: state.offersList,
-  reviewsList: state.reviewsList,
+  offersList: state.DATA.offersList,
+  reviewsList: state.DATA.reviewsList,
   currentOffersList: filterOffers(state),
 });
 

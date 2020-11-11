@@ -48,8 +48,8 @@ MainWithOffers.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  citiesList: state.citiesList,
+  currentCity: state.PROCESS.currentCity,
+  citiesList: state.PROCESS.citiesList,
   currentOffersList: filterOffers(state),
 });
 

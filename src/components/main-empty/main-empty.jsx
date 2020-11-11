@@ -36,9 +36,9 @@ MainEmpty.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  citiesList: state.citiesList,
-  offersList: state.offersList,
+  currentCity: state.PROCESS.currentCity,
+  citiesList: state.PROCESS.citiesList,
+  offersList: state.DATA.offersList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,26 +1,16 @@
-import {ActionTypes} from './action';
-import {getOffer} from '../mocks/offers';
-import {getReviews} from '../mocks/reviews';
-import {extend} from '../utils/store';
-import {OFFERS_COUNT, Locations} from '../const';
-import {getArray, getRandomInteger} from '../utils/offers';
+import {ActionTypes} from '../../action';
+import {extend} from '../../../utils/store';
+import {Locations} from '../../../const';
 
-const REVIEW_COUNT = getRandomInteger(1, 3);
-
-const offers = getArray(OFFERS_COUNT, getOffer);
-const reviews = getArray(REVIEW_COUNT, getReviews);
-
-const initialState = {
+const iState = {
   currentCity: `Amsterdam`,
   citiesList: Locations,
-  offersList: offers,
-  reviewsList: reviews,
   currentSortType: `Popular`,
   sortIsOpen: false,
   activeItem: null,
 };
 
-export const reducer = (state = initialState, action) => {
+export const appProcess = (state = iState, action) => {
   switch (action.type) {
     case ActionTypes.CHANGE_CITY:
       return extend(state, {
