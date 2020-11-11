@@ -5,6 +5,7 @@ export const ActionTypes = {
   CHANGE_ACTIVE_ITEM: `CHANGE ACTIVE ITEM`,
   LOAD_OFFERS: `LOAD OFFERS`,
   LOAD_REVIEWS: `LOAD REVIEWS`,
+  REQUIRED_AUTH: `REQUIRED AUTH`,
 };
 
 export const ActionCreator = {
@@ -32,5 +33,9 @@ export const ActionCreator = {
   loadReviews: (reviews) => ({
     type: ActionTypes.LOAD_REVIEWS,
     payload: reviews,
-  })
+  }),
+  requiredAuth: (status) => ({
+    type: ActionTypes.REQUIRED_AUTH,
+    payload: status,
+  }),
 };
