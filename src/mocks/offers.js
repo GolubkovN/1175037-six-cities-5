@@ -12,8 +12,15 @@ const PHOTOS = new Array(getRandomInteger(3, 6)).fill(``).map(getRandomPhotos);
 
 export const getOffer = () => {
   return {
-    id: String(getRandomInteger(1, 4)),
-    location: getRandomElement(Locations),
+    id: String(getRandomInteger(1, 10)),
+    location: {
+      name: getRandomElement(Locations),
+      coords: {
+        lat: 3,
+        loan: 3,
+        zoom: 13
+      }
+    },
     coordinates: getRandomElement(COORDINATES),
     title: `just the title of the offer ` + getRandomInteger(1, 5),
     picture: {
@@ -29,13 +36,14 @@ export const getOffer = () => {
     photos: PHOTOS,
     Bedrooms: getRandomInteger(1, 3),
     guests: getRandomInteger(1, 5),
-    features: {
-      Wifi: getBooleanValue(0, 1),
-      Heating: getBooleanValue(0, 1),
-      Kitchen: getBooleanValue(0, 1),
-      CableTV: getBooleanValue(0, 1),
-    },
+    features: [
+      `Wifi`,
+      `Heating`,
+      `Kitchen`,
+      `CableTV`,
+    ],
     owner: {
+      id: getRandomInteger(1, 10),
       avatar: `${AVATAR_URL}/${Math.random()}`,
       name: `Name Surname`,
       isSuper: getBooleanValue(0, 1),

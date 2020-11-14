@@ -28,4 +28,6 @@ export const createApi = (onUnautjorized) => {
   };
 
   api.interceptors.response.use(onSuccess, onFail);
+
+  return api;
 };

@@ -24,12 +24,12 @@ const Favorites = ({offers, onHover}) => {
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
                       <Link to="/" className="locations__item-link" href="#">
-                        <span>{location}</span>
+                        <span>{location.name}</span>
                       </Link>
                     </div>
                   </div>
                   <div className="favorites__places">
-                    {groupedOffers.get(location).map((offer, k) =>
+                    {groupedOffers.get(location.name).map((offer, k) =>
                       <FavoriteCard key={`offer-${k}`} offer={offer} onHover={onHover} />
                     )}
                   </div>
