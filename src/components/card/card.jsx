@@ -17,7 +17,6 @@ const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) =>
     isFavorite
   } = offer;
 
-  const {alt, src} = picture;
   const isFavoriteCard = TypeCards.FAVORITES === typeCard;
 
   const Premium = () => {
@@ -42,9 +41,9 @@ const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) =>
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
-            src={src} width={`${isFavoriteCard ? `150` : `260`}`}
+            src={picture} width={`${isFavoriteCard ? `150` : `260`}`}
             height={`${isFavoriteCard ? `110` : `200`}`}
-            alt={alt}
+            alt=""
           />
         </Link>
       </div>

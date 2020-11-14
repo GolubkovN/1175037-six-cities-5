@@ -6,8 +6,7 @@ const {loadOffers, requiredAuth} = ActionCreator;
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
-    .then(({data}) => data.map((item) => adaptOfferToClient(item)))
-    .then(({data}) => dispatch(loadOffers(data)))
+    .then(({data}) => dispatch(loadOffers(data.map((item) => adaptOfferToClient(item)))))
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (

@@ -15,20 +15,15 @@ export const offerTypes = PropTypes.shape({
     lat: PropTypes.number,
     lon: PropTypes.number,
   }),
-  picture: PropTypes.shape({
-    alt: PropTypes.string,
-    src: PropTypes.string,
-  }),
+  picture: PropTypes.string,
   isPremium: PropTypes.bool,
   isFavorite: PropTypes.bool,
   description: PropTypes.string,
   rating: PropTypes.number,
   price: PropTypes.number,
   type: PropTypes.string,
-  photos: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string,
-  })),
-  Bedrooms: PropTypes.number,
+  photos: PropTypes.array,
+  bedrooms: PropTypes.number,
   guests: PropTypes.number,
   features: PropTypes.array,
   owner: PropTypes.shape({

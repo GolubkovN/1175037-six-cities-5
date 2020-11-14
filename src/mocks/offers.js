@@ -34,7 +34,7 @@ export const getOffer = () => {
     price: getRandomInteger(80, 200),
     type: getRandomElement(HOUSING_TYPES),
     photos: PHOTOS,
-    Bedrooms: getRandomInteger(1, 3),
+    bedrooms: getRandomInteger(1, 3),
     guests: getRandomInteger(1, 5),
     features: [
       `Wifi`,
