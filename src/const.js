@@ -1,3 +1,8 @@
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 export const OFFERS_COUNT = 10;
 
 export const Locations = [
@@ -9,12 +14,12 @@ export const Locations = [
   `Brussels`
 ];
 
-export const TypeOfHousing = {
-  APPARTMENT: `Appartment`,
-  ROOM: `Private room`,
-  HOUSE: `House`,
-  HOTEL: `Hotel`
-};
+export const TypeOfHousing = [
+  `Appartment`,
+  `Private room`,
+  `House`,
+  `Hotel`
+];
 
 export const TypeCards = {
   FAVORITES: `favorites__`,
@@ -28,17 +33,21 @@ export const COORDINATES = [
   {
     lat: 52.3909553943508,
     lon: 4.85309666406198,
+    zomm: 13,
   },
   {
     lat: 52.369553943508,
     lon: 4.85309666406198,
+    zomm: 13,
   },
   {
     lat: 52.3509553943508,
     lon: 4.929309666406198,
+    zomm: 13,
   },
   {
     lat: 52.3809553943508,
     lon: 4.939309666406198,
+    zomm: 13,
   },
 ];

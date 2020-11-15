@@ -5,12 +5,6 @@ export const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
-export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
-
-export const getBooleanValue = () => Boolean(getRandomInteger(0, 1));
-
-export const getRandomPhotos = () => ({url: `http://picsum.photos/248/152?r=${Math.random()}`});
-
 export const getRating = (rating) => Math.round(rating / 5 * 100) + `%`;
 
 export const getOffersByLocation = (offers) => {
@@ -40,8 +34,3 @@ export const sortOffers = (sortType, def) => {
   return someArr;
 };
 
-// export const sortRules = {
-//   'low to high': (a, b) => a.price - b.price,
-//   'high to low': (a, b) => b.price - a.price,
-//   'Top rated first': (a, b) => b.rating - a.rating,
-// };

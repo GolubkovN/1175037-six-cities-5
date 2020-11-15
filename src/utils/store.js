@@ -3,7 +3,7 @@ export const extend = (a, b) => {
 };
 
 export const filterByLocation = (arr, what) => {
-  const result = arr.filter(({location}) => location === what);
+  const result = arr.filter((item) => item.location.name === what);
   return result;
 };
 

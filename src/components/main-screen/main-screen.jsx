@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {filterOffers} from '../../store/reducers/selectors';
 
 import {offerTypes} from '../../types';
 
@@ -42,7 +43,7 @@ MainScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentOffersList: state.currentOffersList,
+  currentOffersList: filterOffers(state),
 });
 
 export {MainScreen};

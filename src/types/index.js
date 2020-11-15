@@ -1,35 +1,33 @@
 import PropTypes from 'prop-types';
-import {TypeOfHousing} from '../const';
+// import {TypeOfHousing} from '../const';
 
 export const offerTypes = PropTypes.shape({
-  id: PropTypes.string,
-  location: PropTypes.string,
+  id: PropTypes.any,
+  location: PropTypes.shape({
+    name: PropTypes.string,
+    coords: PropTypes.shape({
+      lat: PropTypes.number,
+      lon: PropTypes.number,
+      zoom: PropTypes.number,
+    })
+  }),
   coordinations: PropTypes.shape({
     lat: PropTypes.number,
     lon: PropTypes.number,
   }),
-  picture: PropTypes.shape({
-    alt: PropTypes.string,
-    src: PropTypes.string,
-  }),
+  picture: PropTypes.string,
   isPremium: PropTypes.bool,
   isFavorite: PropTypes.bool,
   description: PropTypes.string,
   rating: PropTypes.number,
   price: PropTypes.number,
-  type: PropTypes.oneOf(Object.values(TypeOfHousing)),
-  photos: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string,
-  })),
-  Bedrooms: PropTypes.number,
+  type: PropTypes.string,
+  photos: PropTypes.array,
+  bedrooms: PropTypes.number,
   guests: PropTypes.number,
-  features: PropTypes.shape({
-    Wifi: PropTypes.bool,
-    Heating: PropTypes.bool,
-    Kitchen: PropTypes.bool,
-    CableTV: PropTypes.bool,
-  }),
+  features: PropTypes.array,
   owner: PropTypes.shape({
+    id: PropTypes.number,
     avatar: PropTypes.string,
     name: PropTypes.string,
     isSuper: PropTypes.bool,

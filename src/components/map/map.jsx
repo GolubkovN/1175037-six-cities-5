@@ -75,7 +75,7 @@ Map.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeItem: state.activeItem,
+  activeItem: state.PROCESS.activeItem,
 });
 
 export default connect(mapStateToProps)(Map);

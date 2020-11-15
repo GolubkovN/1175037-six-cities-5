@@ -2,7 +2,10 @@ export const ActionTypes = {
   CHANGE_CITY: `CHANGE CITY`,
   OPEN_SORT: `OPEN SORT`,
   CHANGE_SORT_TYPE: `CHANGE SORT TYPE`,
-  CHANGE_ACTIVE_ITEM: `CHANGE ACTIVE ITEM`
+  CHANGE_ACTIVE_ITEM: `CHANGE ACTIVE ITEM`,
+  LOAD_OFFERS: `LOAD OFFERS`,
+  LOAD_REVIEWS: `LOAD REVIEWS`,
+  REQUIRED_AUTH: `REQUIRED AUTH`,
 };
 
 export const ActionCreator = {
@@ -22,5 +25,17 @@ export const ActionCreator = {
   changeActiveItem: (activeItem) => ({
     type: ActionTypes.CHANGE_ACTIVE_ITEM,
     payload: activeItem,
-  })
+  }),
+  loadOffers: (offers) => ({
+    type: ActionTypes.LOAD_OFFERS,
+    payload: offers,
+  }),
+  loadReviews: (reviews) => ({
+    type: ActionTypes.LOAD_REVIEWS,
+    payload: reviews,
+  }),
+  requiredAuth: (status) => ({
+    type: ActionTypes.REQUIRED_AUTH,
+    payload: status,
+  }),
 };
