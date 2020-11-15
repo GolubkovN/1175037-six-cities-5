@@ -48,7 +48,7 @@ const Room = ({routeProps, offers, reviews}) => {
             <div className="property__gallery">
               {offer.photos.map((photo, i) =>
                 <div key={`photo-${i}`} className="property__image-wrapper">
-                  <img className="property__image" src={photo} />
+                  <img className="property__image" src={photo} alt={`photo ${i}`} />
                 </div>)}
             </div>
           </div>

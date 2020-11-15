@@ -43,7 +43,7 @@ const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) =>
             className="place-card__image"
             src={picture} width={`${isFavoriteCard ? `150` : `260`}`}
             height={`${isFavoriteCard ? `110` : `200`}`}
-            alt=""
+            alt="фото предложения"
           />
         </Link>
       </div>
