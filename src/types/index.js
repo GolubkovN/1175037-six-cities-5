@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import {TypeOfHousing} from '../const';
 
 export const offerTypes = PropTypes.shape({
   id: PropTypes.any,
