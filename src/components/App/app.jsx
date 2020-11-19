@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
-import {filterOffers} from '../../store/reducers/selectors';
+import {filterOffers} from '../../store/reducers/app-process/selectors';
 import {offerTypes, reviewTypes} from '../../types';
 
 import MainScreen from '../main-screen/main-screen';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Room from '../room/room';
+import PrivateRoute from '../private-route/private-route';
 
 const App = ({offersList, currentOffersList, reviewsList}) => {
   return (
@@ -21,7 +22,10 @@ const App = ({offersList, currentOffersList, reviewsList}) => {
         <Route exact path='/login'>
           <Login />;
         </Route>
-        <Route exact path='/favorites' render={() => <Favorites offers={offersList.filter(({isFavorite}) => isFavorite)}/>}/>
+        <PrivateRoute
+          exact
+          path='/favorites'
+          render={() => <Favorites offers={offersList.filter(({isFavorite}) => isFavorite)}/>}/>
         <Route exact path='/offer/:id'
           render={(routeProps) =>
             <Room

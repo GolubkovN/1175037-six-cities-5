@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
-import {filterByLocation} from '../../utils/store';
-import {sortOffers} from '../../utils/offers';
+import {filterByLocation} from '../../../utils/store';
+import {sortOffers} from '../../../utils/offers';
 
 const getOffers = (state) => state.DATA.offersList;
 const getCurrentCity = (state) => state.PROCESS.currentCity;
