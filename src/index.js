@@ -9,6 +9,7 @@ import {createApi} from './services/api';
 import {ActionCreator} from './store/action';
 import {fetchOffers, checkAuth} from './store/api-action';
 import RootReducer from './store/reducers';
+import {redirect} from './store/middlewares/redirect';
 
 import {AuthorizationStatus} from './const';
 import App from './components/App/app';
@@ -18,7 +19,10 @@ const api = createApi(() => store.dispatch(requiredAuth(AuthorizationStatus.NO_A
 
 const store = createStore(
     RootReducer,
-    composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
+    )
 );
 
 store.dispatch(fetchOffers());

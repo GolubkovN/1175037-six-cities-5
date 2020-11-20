@@ -2,7 +2,7 @@ import {ActionCreator} from './action';
 import {AuthorizationStatus} from '../const';
 import {adaptOfferToClient} from '../adapter';
 
-const {loadOffers, requiredAuth, changeLogin} = ActionCreator;
+const {loadOffers, requiredAuth, changeLogin, redirectToRoute} = ActionCreator;
 
 export const fetchOffers = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
@@ -26,4 +26,5 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
       dispatch(requiredAuth(AuthorizationStatus.AUTH));
       dispatch(changeLogin(data.email));
     })
+    .then(() => dispatch(redirectToRoute(`/`)))
 );

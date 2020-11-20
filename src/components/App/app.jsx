@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
+import browserHistory from '../../browser-history';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {filterOffers} from '../../store/reducers/app-process/selectors';
@@ -14,7 +15,7 @@ import PrivateRoute from '../private-route/private-route';
 
 const App = ({offersList, currentOffersList, reviewsList}) => {
   return (
-    <BrowserRouter>
+    <Router history={browserHistory}>
       <Switch>
         <Route exact path='/'>
           <MainScreen/>;
@@ -36,7 +37,7 @@ const App = ({offersList, currentOffersList, reviewsList}) => {
             />}
         />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 
