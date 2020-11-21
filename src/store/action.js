@@ -6,6 +6,8 @@ export const ActionTypes = {
   LOAD_OFFERS: `LOAD OFFERS`,
   LOAD_REVIEWS: `LOAD REVIEWS`,
   REQUIRED_AUTH: `REQUIRED AUTH`,
+  CHANGE_LOGIN: `CHANGE LOGIN`,
+  REDIRECT_TO_ROUTE: `REDIRECT TO ROUTE`
 };
 
 export const ActionCreator = {
@@ -37,5 +39,13 @@ export const ActionCreator = {
   requiredAuth: (status) => ({
     type: ActionTypes.REQUIRED_AUTH,
     payload: status,
+  }),
+  changeLogin: (login) => ({
+    type: ActionTypes.CHANGE_LOGIN,
+    payload: login,
+  }),
+  redirectToRoute: (url) => ({
+    type: ActionTypes.REDIRECT_TO_ROUTE,
+    payload: url,
   }),
 };
