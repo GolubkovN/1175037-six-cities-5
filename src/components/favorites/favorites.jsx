@@ -33,7 +33,7 @@ const Favorites = ({offers, onHover}) => {
                         </div>
                       </div>
                       <div className="favorites__places">
-                        {groupedOffers.get(location.name).map((offer, k) =>
+                        {groupedOffers.get(location).map((offer, k) =>
                           <FavoriteCard key={`offer-${k}`} offer={offer} onHover={onHover} />
                         )}
                       </div>
