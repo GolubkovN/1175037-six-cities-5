@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import {getRating} from '../../utils/offers';
 import {offerTypes} from '../../types';
-import {TypeCards} from "../../const";
+import {TypeCards, AuthorizationStatus} from "../../const";
 
-const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) => {
+const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard, authorizationStatus}) => {
   const {
     isPremium,
     picture,
@@ -38,7 +39,11 @@ const Card = ({onHover = () => {}, onMouseLeave = () => {}, offer, typeCard}) =>
       {isPremium && <Premium />}
 
       <div className={`${typeCard}image-wrapper place-card__image-wrapper`}>
-        <Link to={`/offer/${offer.id}`}>
+        <Link to={
+          authorizationStatus === AuthorizationStatus.AUTH
+            ? `/offer/${offer.id}`
+            : `/login`
+        }>
           <img
             className="place-card__image"
             src={picture} width={`${isFavoriteCard ? `150` : `260`}`}
@@ -81,7 +86,12 @@ Card.propTypes = {
   onMouseLeave: PropTypes.func,
   offer: offerTypes.isRequired,
   typeCard: PropTypes.oneOf(Object.values(TypeCards)),
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-export default Card;
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.USER.authorizationStatus,
+});
+
+export default connect(mapStateToProps)(Card);
 

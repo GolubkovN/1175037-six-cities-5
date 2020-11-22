@@ -20,7 +20,7 @@ const Premium = () => {
 
 const Room = ({routeProps, offers, reviews}) => {
   const offer = offers.find(({id}) => id === +routeProps.match.params.id);
-  const nearOffers = offers.filter(({id}) => id !== +routeProps.match.params.id);
+  const nearOffers = offers.filter(({id}) => id !== +routeProps.match.params.id).slice(1, 4);
   const currentReviews = reviews.filter(({id}) => id === offer.id);
 
   const {

@@ -14,7 +14,7 @@ export const adaptOfferToClient = (data) => {
         picture: data.preview_image,
         features: data.goods,
         owner: {
-          avatart: data.host.avatar_url,
+          avatar: data.host.avatar_url,
           id: data.host.id,
           name: data.host.name,
           isSuper: data.host.is_pro,
